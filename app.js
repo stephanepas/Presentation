@@ -26,6 +26,8 @@ ham.addEventListener("click", toggleHamburger)
 // bascule quand on click sur les liens
 menuLinks.forEach( 
   function(menuLink) { 
-    menuLink.addEventListener("click", toggleHamburger) 
+    menuLink.addEventListener("click", toggleHamburger, ()=>{
+      menuLinks.classList.toggle('active');
+  })
   }
 )
