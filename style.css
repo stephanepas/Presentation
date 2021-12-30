@@ -1,5 +1,6 @@
 :root {
   --Moderate_white: rgb(227, 227, 227);
+  --saumon: rgb(155, 76, 76);
 }
 * {
   box-sizing: border-box;
@@ -100,7 +101,7 @@ body {
   width: 100vw;
   height: calc(100vh - 3rem);
   overflow: hidden;
-  color: var(--Moderate_white);
+  /* color: var(--Moderate_white); */
   /* par défaut, cache le menu en dessous de l'écran */
   transform: translateY(-100%);
   transition: transform 0.4s ease;
@@ -129,9 +130,14 @@ body {
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
 }
+/* rendre visible la page html active */
+.active{
+  color: var(--saumon);
+}
 .navbar ul li a:hover,
 .navbar ul li a:focus {
-  border-bottom: 2px solid var(--Moderate_white);
+  border-bottom: 2px solid var(--saumon);
+  color: var(--saumon);
 }
 main {
   text-align: center;
@@ -141,7 +147,6 @@ main {
   grid-template-rows: 2fr 1fr 1fr;
   align-items: center;
 }
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -153,7 +158,6 @@ main {
   text-align: center;
   border-top: 2px solid var(--Moderate_white);
 }
-
 /* Menu version desktop */
 @media only screen and (min-width: 1100px) {
   body {
@@ -180,11 +184,10 @@ main {
     align-items: center;
   }
   .active{
-    color: black;
-    background-color: var(--Moderate_white);
+    color: var(--Moderate_white);
+    background-color: var(--saumon);
     transition: 0.3s;
   }
-
   .navbar ul li a {
     border-bottom: none;
     line-height: 7vh;
@@ -195,6 +198,7 @@ main {
   .navbar ul li a:focus {
     color: black;
     background-color: var(--Moderate_white);
+    border-bottom: 4px solid var(--saumon);
     transition: 0.3s;
   }
 }
