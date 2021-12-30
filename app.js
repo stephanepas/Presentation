@@ -2,7 +2,7 @@ const navbar = document.querySelector('.navbar');
 const ham = document.querySelector('.ham');
 const curseur = document.querySelector('.curseur');
 const menuLinks = document.querySelectorAll('.menuLink')
-
+console.log(menuLinks)
 // Animation curseur
 document.addEventListener('mousemove', e => {
     curseur.style.top = e.pageY -20 + 'px';
@@ -26,8 +26,6 @@ ham.addEventListener("click", toggleHamburger)
 // bascule quand on click sur les liens
 menuLinks.forEach( 
   function(menuLink) { 
-    menuLink.addEventListener("click", toggleHamburger, ()=>{
-      menuLinks.classList.toggle('active');
-  })
+    menuLink.addEventListener("click", toggleHamburger)
   }
 )
