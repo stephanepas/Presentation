@@ -1,8 +1,10 @@
 const navbar = document.querySelector('.navbar');
 const ham = document.querySelector('.ham');
 const curseur = document.querySelector('.curseur');
-const menuLinks = document.querySelectorAll('.menuLink')
-console.log(menuLinks)
+const menuLinks = document.querySelectorAll('.menuLink');
+const diapos = document.querySelectorAll('.diapo');
+
+
 // Animation curseur
 document.addEventListener('mousemove', e => {
     curseur.style.top = e.pageY -20 + 'px';
@@ -29,3 +31,15 @@ menuLinks.forEach(
     menuLink.addEventListener("click", toggleHamburger)
   }
 )
+
+diapos.forEach(diapo => {
+    diapo.addEventListener('click', () => {
+        removeActiveClasses()
+        diapo.classList.add('isActive')
+    })
+})
+function removeActiveClasses() {
+    diapos.forEach(diapo => {
+        diapo.classList.remove('isActive')
+    })
+}

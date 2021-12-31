@@ -76,8 +76,8 @@ body {
 }
 /* Menu hamburger */
 .ham {
-  position: absolute;
-  z-index: 1000;
+  position: fixed;
+  z-index: 2;
   bottom: 4rem;
   right: 2rem;
   width: 36px;
@@ -99,12 +99,12 @@ body {
   left: 0;
   background: black;
   width: 100vw;
-  height: calc(100vh - 3rem);
+  height: 95vh;
   overflow: hidden;
-  /* color: var(--Moderate_white); */
   /* par défaut, cache le menu en dessous de l'écran */
   transform: translateY(-100%);
   transition: transform 0.4s ease;
+  z-index: 1;
 }
 .showNav {
   /* Montre le menu */
@@ -126,12 +126,12 @@ body {
 }
 .menuLink {
   color: var(--Moderate_white);
-  /* border-bottom: 2px solid black; */
+  border-bottom: 2px solid black;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
 }
-/* rendre visible la page html active */
-.active{
+/* rendre visible le menu de la page html active */
+.menuLink.active{
   color: var(--saumon);
 }
 .navbar ul li a:hover,
@@ -139,20 +139,29 @@ body {
   border-bottom: 2px solid var(--saumon);
   color: var(--saumon);
 }
-main {
+#accueil {
   text-align: center;
-  width: 100%;
-  height: 90vh;
+  width: 90%;
+  height: 95vh;
+  margin: auto;
   display: grid;
   grid-template-rows: 2fr 1fr 1fr;
   align-items: center;
 }
+.main{
+  height: 95vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 1rem 0;
+  height: 5vh;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: black;
   color: var(--Moderate_white);
   text-align: center;
@@ -183,13 +192,14 @@ main {
     display: flex;
     align-items: center;
   }
-  .active{
+  .menuLink.active{
     color: var(--Moderate_white);
     background-color: var(--saumon);
     transition: 0.3s;
+    border-bottom: 4px solid var(--saumon);
   }
   .navbar ul li a {
-    border-bottom: none;
+    border-bottom: 4px solid black;
     line-height: 7vh;
     font-size: .8vw;
     padding: 0 1rem;
@@ -201,4 +211,42 @@ main {
     border-bottom: 4px solid var(--saumon);
     transition: 0.3s;
   }
+  .containerPrincipal {
+    height: 88vh;
+    display: flex;
+  }
+  .container{
+    width: 90vw;
+    display: flex;
+    margin: auto;
+  }
+  .diapo {
+    height: 80vh;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    background-color: turquoise;
+  }
+  .diapo h2 {
+    /* height: 80vh; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform:translateY(-50%);
+    opacity: 0;
+  }
+  
+  .diapo.isActive {
+    flex: 7;
+  }
+  
+  .diapo.isActive h2 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+  }
+  
 }
