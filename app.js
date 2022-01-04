@@ -4,12 +4,13 @@ const curseur = document.querySelector('.curseur');
 const menuLinks = document.querySelectorAll('.menuLink');
 const diapos = document.querySelectorAll('.diapo');
 
-
-// Animation curseur
+// position curseur
 document.addEventListener('mousemove', e => {
     curseur.style.top = e.pageY -20 + 'px';
     curseur.style.left = e.pageX -20 + 'px';
+    curseur.classList.add('cursor');
 })
+// Animation curseur
 document.addEventListener('click', ()=>{
     curseur.classList.add('expand');
     setTimeout(() => {
@@ -20,7 +21,9 @@ document.addEventListener('click', ()=>{
 // bascule le menu hamburger in and out quand on click dessus
 function toggleHamburger(){
   navbar.classList.toggle("showNav")
-  ham.classList.toggle("showClose")
+  setTimeout(() => {
+    ham.classList.toggle("showClose");
+}, 600);
 }
 
 ham.addEventListener("click", toggleHamburger)
