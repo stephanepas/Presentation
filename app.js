@@ -20,10 +20,8 @@ document.addEventListener('click', ()=>{
 
 // bascule le menu hamburger in and out quand on click dessus
 function toggleHamburger(){
-  navbar.classList.toggle("showNav")
-  setTimeout(() => {
+    navbar.classList.toggle("showNav")
     ham.classList.toggle("showClose");
-}, 600);
 }
 
 ham.addEventListener("click", toggleHamburger)
@@ -45,4 +43,21 @@ function removeActiveClasses() {
     diapos.forEach(diapo => {
         diapo.classList.remove('isActive')
     })
+}
+// Ajout du titre de la page en version mobile
+    const parentDivAjoute = document.querySelector('.container');
+    const titrePage = document.title;
+    const largeurFenetre = window.innerWidth;
+    const divAjoute = document.createElement('div');
+  
+window.onload = ajoutDivMobile;
+// window.onresize = ajoutDivMobile;
+
+function ajoutDivMobile () {
+    if (largeurFenetre < 1100){
+        divAjoute.className = 'divTitreMobile';
+        divAjoute.innerHTML = titrePage;
+        parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);       
+    // } else { divAjoute.parentNode.removeChild(divAjoute); 
+    }
 }
