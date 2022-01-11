@@ -4,6 +4,34 @@ const curseur = document.querySelector('.curseur');
 const menuLinks = document.querySelectorAll('.menuLink');
 const diapos = document.querySelectorAll('.diapo');
 
+window.onload = () => {
+    const transition_el = document.querySelector('.transition');
+console.log(transition_el)
+
+    setTimeout(() => {
+      transition_el.classList.remove('is-active');
+    }, 200);
+  
+    // for (let j = 0; j < menuLinks.length; j++) {
+  
+      menuLinks[1].addEventListener('click', e => {
+        // e.preventDefault();
+        let target = e.target.href;
+  
+        console.log(transition_el);
+  
+        transition_el.classList.add('is-active');
+  
+        console.log(transition_el);
+  
+        setInterval(() => {
+          window.location.href = target;
+        }, 200);
+      })
+    // }
+  }
+
+
 // position curseur
 document.addEventListener('mousemove', e => {
     curseur.style.top = e.pageY -20 + 'px';
@@ -50,7 +78,7 @@ function removeActiveClasses() {
     const largeurFenetre = window.innerWidth;
     const divAjoute = document.createElement('div');
   
-window.onload = ajoutDivMobile;
+// window.onload = ajoutDivMobile;
 // window.onresize = ajoutDivMobile;
 
 function ajoutDivMobile () {
