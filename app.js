@@ -6,15 +6,17 @@ const diapos = document.querySelectorAll('.diapo');
 
 window.onload = () => {
     const transition_el = document.querySelector('.transition');
-console.log(transition_el)
+    const anchors = document.querySelectorAll('.menuLink');
 
+console.log(transition_el)
+console.log(anchors)
     setTimeout(() => {
       transition_el.classList.remove('is-active');
     }, 500);
   
-    for (let j = 0; j < menuLinks.length; j++) {
+    for (let j = 0; j < anchors.length; j++) {
   
-      menuLinks[1].addEventListener('click', e => {
+      anchors[j].addEventListener('click', e => {
         e.preventDefault();
         let target = e.target.href;
   

@@ -34,9 +34,16 @@ body {
 
 .transition-2.is-active {
   left: 0px;
-  opacity: 1;
+  animation: transition 500ms;
 }
-
+@keyframes transition {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 /* animation du curseur */
 .cursor {
   width: 40px;
