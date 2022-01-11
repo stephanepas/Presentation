@@ -29,10 +29,12 @@ body {
   z-index: 10;
   background-color: darkblue;
   transition: 1s ease-out;
+  opacity: 0;
 }
 
 .transition-2.is-active {
   left: 0px;
+  opacity: 1;
 }
 
 /* animation du curseur */

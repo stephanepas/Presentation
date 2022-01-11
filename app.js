@@ -10,12 +10,12 @@ console.log(transition_el)
 
     setTimeout(() => {
       transition_el.classList.remove('is-active');
-    }, 200);
+    }, 500);
   
-    // for (let j = 0; j < menuLinks.length; j++) {
+    for (let j = 0; j < menuLinks.length; j++) {
   
       menuLinks[1].addEventListener('click', e => {
-        // e.preventDefault();
+        e.preventDefault();
         let target = e.target.href;
   
         console.log(transition_el);
@@ -26,9 +26,9 @@ console.log(transition_el)
   
         setInterval(() => {
           window.location.href = target;
-        }, 200);
+        }, 500);
       })
-    // }
+    }
   }
 
 
