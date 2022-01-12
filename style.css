@@ -282,7 +282,7 @@ body {
     border: 1px solid black;
     box-shadow: 0px 0px 6px black;
     background-color: var(--Moderate_white);
-    /* overflow: hidden; */
+    overflow: hidden;
   }
   .diapo h2 {
     font-size: 2vw;
@@ -355,7 +355,7 @@ body {
   }
   .diapo.isActive {
     flex: 5;
-    cursor: default;
+    cursor: url(./assets/img/mycursor2.png), default;
   }
   .diapo.isActive p,
   .diapo.isActive .textPrincipal,
