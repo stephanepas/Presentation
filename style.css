@@ -18,6 +18,7 @@ body {
   height: 100vh;
   cursor: url(./assets/img/mycursor2.png), default;
   position: relative;
+  overflow: hidden;
 }
 /* animation du curseur */
 .cursor {
@@ -156,10 +157,10 @@ body {
   grid-template-rows: 2fr 1fr 1fr;
   align-items: center;
 }
-.container{
+.container {
   text-align: center;
 }
-.divTitreMobile{
+.divTitreMobile {
   color: red;
   text-align: center;
 }
@@ -169,7 +170,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.diapo{
+.diapo {
   height: 86vh;
   width: 90%;
   border: 1px solid black;
@@ -194,7 +195,7 @@ body {
 }
 /* Menu version desktop */
 @media only screen and (min-width: 1100px) {
-  body{
+  body {
     background-color: white;
   }
   .ham {
@@ -239,16 +240,18 @@ body {
   }
   .transition-2 {
     position: fixed;
-    top: 100%;
-    left: 0;
+    top: 0;
+    left: 100%;
     width: 100%;
     height: 100vh;
     z-index: 10;
     background-color: rgb(0, 0, 0);
-    transition: 300ms ease-out;
+    transition: 1000ms ease-out;
+    opacity: 0;
   }
   .transition-2.is-active {
-    top: 0;
+    left: 0;
+    opacity: 1;
   }
   #accueil {
     text-align: center;
@@ -279,8 +282,7 @@ body {
     border: 1px solid black;
     box-shadow: 0px 0px 6px black;
     background-color: var(--Moderate_white);
-    overflow: hidden;
-    /* padding: 50px; */
+    /* overflow: hidden; */
   }
   .diapo h2 {
     font-size: 2vw;
@@ -293,47 +295,98 @@ body {
     text-decoration: underline;
     font-style: italic;
   }
-  .diapo p {
+  .diapo p,
+  .diapo .textPrincipal {
     opacity: 0;
     font-size: 2vw;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,calc(-50% + 2.5vh));
+    transform: translate(-50%, calc(-50% + 2.5vh));
     width: 90%;
     height: max-content;
     text-align: center;
   }
+  .myBtn {
+    color: rgb(54, 54, 136);
+    text-decoration: underline;
+  }
+  .myBtn:hover, .modal:hover {
+    cursor: pointer;
+  }
+  /* la fenêtre popup (background) */
+  .modal {
+    display: none; /* cachée par défaut */
+    position: absolute; /* position fixe */
+    z-index: 2; /* dessus */
+    left: 50%; /* position au centre */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(194, 172, 172, 0.454);
+  }
+  /* Contenu de la fenêtre */
+  .modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: url(./assets/img/mycursor2.png), default;
+
+  }
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
   .diapo.isActive {
     flex: 5;
+    cursor: default;
   }
-  .diapo.isActive p, .diapo.isActive video, .diapo.isActive img {
+  .diapo.isActive p,
+  .diapo.isActive .textPrincipal,
+  .diapo.isActive video,
+  .diapo.isActive img {
     opacity: 1;
     transition: 0.4s ease-in;
   }
   video {
     opacity: 0;
-    position:absolute;
+    position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,calc(-50% + 2.5vh));    
+    transform: translate(-50%, calc(-50% + 2.5vh));
     height: 80%;
     border-radius: 5px;
     box-shadow: 0 0 6px black;
     display: none;
   }
-  .diapo.isActive video{
+  .diapo.isActive video {
     display: block;
   }
-  img{
+  img {
     opacity: 0;
-    position:absolute;
+    position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,calc(-50% + 2.5vh));    
+    transform: translate(-50%, calc(-50% + 2.5vh));
     max-height: 80%;
     max-width: 90%;
     border-radius: 5px;
     box-shadow: 0 0 6px black;
-  };
+  }
 }
