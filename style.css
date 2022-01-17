@@ -1,7 +1,8 @@
 :root {
-  --Moderate_white: rgb(227, 227, 227);
-  --saumon: rgb(155, 76, 76);
-  --lightBlue: rgb(200, 233, 244);
+  --premiere: rgb(227, 227, 227); /* blanc creme */
+  --secondaire: rgb(255, 215, 0); /* gold */
+  --tertiaire: rgb(0, 0, 0); /* black */
+  --quatrieme: rgb(255, 255, 255); /* white */
 }
 * {
   box-sizing: border-box;
@@ -13,12 +14,10 @@ html {
   font-family: Roboto;
 }
 body {
-  /* background: var(--Moderate_white); */
   width: 100%;
   height: 100vh;
   cursor: url(./assets/img/mycursor2.png), default;
   position: relative;
-  overflow: hidden;
 }
 /* animation du curseur */
 .cursor {
@@ -45,7 +44,7 @@ body {
   content: '';
   width: 20px;
   height: 20px;
-  border: 5px solid white;
+  border: 5px solid var(--quatrieme);
   border-radius: 50%;
   position: absolute;
   top: 2.5px;
@@ -105,7 +104,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background: black;
+  background: var(--tertiaire);
   width: 100vw;
   height: 95vh;
   overflow: hidden;
@@ -135,18 +134,18 @@ body {
   text-align: center;
 }
 .menuLink {
-  color: var(--Moderate_white);
-  border-bottom: 2px solid black;
+  color: var(--premiere);
+  border-bottom: 2px solid var(--tertiaire);
   text-decoration: none;
 }
 /* rendre visible le menu de la page html active */
 .menuLink.active {
-  color: var(--saumon);
+  color: var(--secondaire);
 }
 .navbar ul li a:hover,
 .navbar ul li a:focus {
-  border-bottom: 2px solid var(--saumon);
-  color: var(--saumon);
+  border-bottom: 2px solid var(--secondaire);
+  color: var(--secondaire);
 }
 #accueil {
   text-align: center;
@@ -173,12 +172,57 @@ body {
 .diapo {
   height: 86vh;
   width: 90%;
-  border: 1px solid black;
+  border: 1px solid var(--tertiaire);
   margin: 1vh auto;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 0 3px black;
-  background-color: var(--Moderate_white);
+  box-shadow: 0 0 3px var(--tertiaire);
+  background-color: var(--premiere);
+}
+.myBtn {
+  color: rgb(54, 54, 136);
+  text-decoration: underline;
+}
+.myBtn:hover, .modal:hover {
+  cursor: pointer;
+}
+/* la fenêtre popup (background) */
+.modal {
+  display: none; /* cachée par défaut */
+  position: fixed; 
+  z-index: 2; /* dessus */
+  left: 50%; /* position au centre */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; /* pleine page */
+  height: 100vh;
+}
+/* Contenu de la fenêtre */
+.modal-content {
+  background-color: var(--quatrieme);
+  padding: 1vw 1vw 0 1vw;
+  font-size: 2vw;
+  border: 10px solid;
+  border-image: radial-gradient(var(--secondaire), var(--tertiaire)) 42%;
+  box-shadow: 0 0 10px var(--tertiaire);
+  width: max-content;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: url(./assets/img/mycursor2.png), default;
+  text-align: center;
+
+}
+/* The Close Button */
+.close {
+  color: var(--premiere);
+}
+.close:hover,
+.close:focus {
+  color: var(--tertiaire);
+  text-decoration: none;
+  cursor: pointer;
 }
 .footer {
   height: 5vh;
@@ -188,15 +232,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  color: var(--Moderate_white);
+  background-color: var(--tertiaire);
+  color: var(--premiere);
   text-align: center;
-  border-top: 2px solid var(--Moderate_white);
+  border-top: 2px solid var(--premiere);
 }
 /* Menu version desktop */
 @media only screen and (min-width: 1100px) {
   body {
-    background-color: white;
+    background-color: var(--quatrieme);
+    overflow: hidden;
   }
   .ham {
     display: none;
@@ -220,22 +265,22 @@ body {
     align-items: center;
   }
   .menuLink.active {
-    color: var(--Moderate_white);
-    background-color: var(--saumon);
+    color: var(--tertiaire);
+    background-color: var(--secondaire);
     transition: 0.3s;
-    border-bottom: 4px solid var(--saumon);
+    border-bottom: 4px solid var(--secondaire);
   }
   .navbar ul li a {
-    border-bottom: 4px solid black;
+    border-bottom: 4px solid var(--tertiaire);
     line-height: 7vh;
     font-size: 0.8vw;
     padding: 0 1rem;
   }
   .navbar ul li a:hover,
   .navbar ul li a:focus {
-    color: black;
-    background-color: var(--Moderate_white);
-    border-bottom: 4px solid var(--saumon);
+    color: var(--tertiaire);
+    background-color: var(--premiere);
+    border-bottom: 4px solid var(--secondaire);
     transition: 0.3s;
   }
   .transition-2 {
@@ -245,7 +290,7 @@ body {
     width: 100%;
     height: 100vh;
     z-index: 10;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--tertiaire);
     transition: 1000ms ease-out;
     opacity: 0;
   }
@@ -279,9 +324,9 @@ body {
     flex: 1;
     margin: 10px;
     position: relative;
-    border: 1px solid black;
-    box-shadow: 0px 0px 6px black;
-    background-color: var(--Moderate_white);
+    border: 1px solid var(--tertiaire);
+    box-shadow: 0px 0px 6px var(--tertiaire);
+    background-color: var(--premiere);
     overflow: hidden;
   }
   .diapo h2 {
@@ -295,8 +340,7 @@ body {
     text-decoration: underline;
     font-style: italic;
   }
-  .diapo p,
-  .diapo .textPrincipal {
+  .diapo p {
     opacity: 0;
     font-size: 2vw;
     position: absolute;
@@ -307,58 +351,11 @@ body {
     height: max-content;
     text-align: center;
   }
-  .myBtn {
-    color: rgb(54, 54, 136);
-    text-decoration: underline;
-  }
-  .myBtn:hover, .modal:hover {
-    cursor: pointer;
-  }
-  /* la fenêtre popup (background) */
-  .modal {
-    display: none; /* cachée par défaut */
-    position: absolute; /* position fixe */
-    z-index: 2; /* dessus */
-    left: 50%; /* position au centre */
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(194, 172, 172, 0.454);
-  }
-  /* Contenu de la fenêtre */
-  .modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    height: 50%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: url(./assets/img/mycursor2.png), default;
-
-  }
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
   .diapo.isActive {
     flex: 5;
     cursor: url(./assets/img/mycursor2.png), default;
   }
   .diapo.isActive p,
-  .diapo.isActive .textPrincipal,
   .diapo.isActive video,
   .diapo.isActive img {
     opacity: 1;
@@ -372,7 +369,7 @@ body {
     transform: translate(-50%, calc(-50% + 2.5vh));
     height: 80%;
     border-radius: 5px;
-    box-shadow: 0 0 6px black;
+    box-shadow: 0 0 6px var(--tertiaire);
     display: none;
   }
   .diapo.isActive video {
@@ -387,6 +384,6 @@ body {
     max-height: 80%;
     max-width: 90%;
     border-radius: 5px;
-    box-shadow: 0 0 6px black;
+    box-shadow: 0 0 6px var(--tertiaire);
   }
 }
