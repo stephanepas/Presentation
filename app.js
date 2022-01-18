@@ -1,7 +1,6 @@
 const navbar = document.querySelector('.navbar');
 const ham = document.querySelector('.ham');
 const curseur = document.querySelector('.curseur');
-const curseur2 = document.querySelector('.curseur2');
 const menuLinks = document.querySelectorAll('.menuLink');
 const diapos = document.querySelectorAll('.diapo');
 
@@ -30,7 +29,6 @@ window.onload = () => {
     if (largeurFenetre < 1100 && titrePage != "Présentation de mon projet") {
       const parentDivAjoute = document.querySelector('.container');
       const divAjoute = document.createElement('div');
-
       divAjoute.className = 'divTitreMobile';
       divAjoute.innerHTML = titrePage;
       parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);
@@ -38,23 +36,22 @@ window.onload = () => {
   }
 }
 // position curseur
+let timer; // variable pour effacer le chrono setimeout)
+
 document.addEventListener('mousemove', e => {
   curseur.style.top = e.pageY - 20 + 'px';
   curseur.style.left = e.pageX - 20 + 'px';
   curseur.classList.add('cursor');
-  curseur2.classList.add('cursor2');
-  curseur.style.display = "block";
-  setTimeout(() => {
-    curseur.style.display = "none";
-  }, 1000);
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    curseur.classList.remove('cursor');
+  }, 500);
 })
 // Animation curseur
 document.addEventListener('click', () => {
   curseur.classList.add('expand');
-  curseur.style.display = "block";
   setTimeout(() => {
     curseur.classList.remove('expand');
-    curseur.style.display = "none";
   }, 500);
 })
 

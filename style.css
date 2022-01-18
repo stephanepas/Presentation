@@ -40,14 +40,15 @@ body {
     transform: scale(0.5);
   }
 }
-.cursor2 {
+.cursor::after {
+  content: '';
   width: 20px;
   height: 20px;
   border: 5px solid var(--quatrieme);
   border-radius: 50%;
-  position: relative;
-  top: 8px;
-  left: 8px;
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
   animation: animCurseur2 1500ms alternate infinite;
 }
 @keyframes animCurseur2 {
