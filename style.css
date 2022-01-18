@@ -1,6 +1,6 @@
 :root {
   --premiere: rgb(227, 227, 227); /* blanc creme */
-  --secondaire: rgb(255, 215, 0); /* gold */
+  --secondaire: rgb(208, 192, 103); /* gold */
   --tertiaire: rgb(0, 0, 0); /* black */
   --quatrieme: rgb(255, 255, 255); /* white */
 }
@@ -40,28 +40,27 @@ body {
     transform: scale(0.5);
   }
 }
-.curseur::after {
-  content: '';
+.cursor2 {
   width: 20px;
   height: 20px;
   border: 5px solid var(--quatrieme);
   border-radius: 50%;
-  position: absolute;
-  top: 2.5px;
-  left: 2.5px;
+  position: relative;
+  top: 8px;
+  left: 8px;
   animation: animCurseur2 1500ms alternate infinite;
 }
 @keyframes animCurseur2 {
   0% {
     transform: scale(1);
-    opacity: 0;
+    opacity: 1;
   }
   50% {
     transform: scale(0.5);
   }
   100% {
     transform: scale(3);
-    opacity: 1;
+    opacity: 0;
   }
 }
 .expand {
@@ -169,6 +168,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+#img_logo {
+  position: absolute;
+  top: 50vh;
+  left: 25vw;
+  transform: translate(-50%, -50%);
+  width: 15%;
+}
+#img_logo_handi_interim {
+  float: right;
+
+}
 .diapo {
   height: 86vh;
   width: 90%;
@@ -183,13 +193,14 @@ body {
   color: rgb(54, 54, 136);
   text-decoration: underline;
 }
-.myBtn:hover, .modal:hover {
+.myBtn:hover,
+.modal:hover {
   cursor: pointer;
 }
 /* la fenêtre popup (background) */
 .modal {
   display: none; /* cachée par défaut */
-  position: fixed; 
+  position: fixed;
   z-index: 2; /* dessus */
   left: 50%; /* position au centre */
   top: 50%;
@@ -212,7 +223,6 @@ body {
   transform: translate(-50%, -50%);
   cursor: url(./assets/img/mycursor2.png), default;
   text-align: center;
-
 }
 /* The Close Button */
 .close {
@@ -302,10 +312,10 @@ body {
     text-align: center;
     width: 90%;
     height: 88vh;
-    margin: auto;
+    padding-left: 25vw;
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr;
-    align-items: center;
+    grid-template-rows: repeat(3, 10%);
+    align-content: center;
   }
   .containerPrincipal {
     height: 88vh;
@@ -328,6 +338,7 @@ body {
     box-shadow: 0px 0px 6px var(--tertiaire);
     background-color: var(--premiere);
     overflow: hidden;
+    opacity: 0.3;
   }
   .diapo h2 {
     font-size: 2vw;
@@ -352,12 +363,13 @@ body {
     text-align: center;
   }
   .diapo.isActive {
-    flex: 5;
+    flex: 7;
     cursor: url(./assets/img/mycursor2.png), default;
+    opacity: 1;
   }
   .diapo.isActive p,
   .diapo.isActive video,
-  .diapo.isActive img {
+  .diapo.isActive .img {
     opacity: 1;
     transition: 0.4s ease-in;
   }
@@ -375,7 +387,7 @@ body {
   .diapo.isActive video {
     display: block;
   }
-  img {
+  .img {
     opacity: 0;
     position: absolute;
     left: 50%;

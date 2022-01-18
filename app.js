@@ -1,6 +1,7 @@
 const navbar = document.querySelector('.navbar');
 const ham = document.querySelector('.ham');
 const curseur = document.querySelector('.curseur');
+const curseur2 = document.querySelector('.curseur2');
 const menuLinks = document.querySelectorAll('.menuLink');
 const diapos = document.querySelectorAll('.diapo');
 
@@ -41,12 +42,19 @@ document.addEventListener('mousemove', e => {
   curseur.style.top = e.pageY - 20 + 'px';
   curseur.style.left = e.pageX - 20 + 'px';
   curseur.classList.add('cursor');
+  curseur2.classList.add('cursor2');
+  curseur.style.display = "block";
+  setTimeout(() => {
+    curseur.style.display = "none";
+  }, 1000);
 })
 // Animation curseur
 document.addEventListener('click', () => {
   curseur.classList.add('expand');
+  curseur.style.display = "block";
   setTimeout(() => {
     curseur.classList.remove('expand');
+    curseur.style.display = "none";
   }, 500);
 })
 
