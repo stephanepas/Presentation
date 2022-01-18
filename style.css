@@ -185,7 +185,7 @@ body {
   width: 90%;
   border: 1px solid var(--tertiaire);
   margin: 1vh auto;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   box-shadow: 0 0 3px var(--tertiaire);
   background-color: var(--premiere);
@@ -329,7 +329,6 @@ body {
   }
   .diapo {
     height: 80vh;
-    border-radius: 50px;
     color: rgb(0, 0, 0);
     cursor: pointer;
     flex: 1;
@@ -342,7 +341,7 @@ body {
     opacity: 0.3;
   }
   .diapo h2 {
-    font-size: 2vw;
+    font-size: 1.6vw;
     position: absolute;
     left: 50%;
     top: 2.5vh;
