@@ -26,14 +26,15 @@ window.onload = () => {
   // fonction pour ajouter le titre de la diapo en version mobile sauf sur la page d'accueil
   ajoutDivMobile()
   function ajoutDivMobile() {
-    if (largeurFenetre < 1100 && titrePage != "Présentation de mon projet") {
-      const parentDivAjoute = document.querySelector('.container');
-      const divAjoute = document.createElement('div');
-      divAjoute.className = 'divTitreMobile';
-      divAjoute.innerHTML = titrePage;
-      parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);
-    }
-  }
+    setTimeout(() => {
+      if (largeurFenetre < 1100 && titrePage != "Présentation de mon projet") {
+        const parentDivAjoute = document.querySelector('.container');
+        const divAjoute = document.createElement('div');
+        divAjoute.className = 'divTitreMobile';
+        divAjoute.innerHTML = titrePage;
+        parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);
+      }  
+    }, 500);  }
 }
 // position curseur
 let timer; // variable pour effacer le chrono setimeout)
@@ -52,7 +53,7 @@ document.addEventListener('click', () => {
   curseur.classList.add('expand');
   setTimeout(() => {
     curseur.classList.remove('expand');
-  }, 500);
+  }, 250);
 })
 
 // bascule le menu hamburger in and out quand on click dessus

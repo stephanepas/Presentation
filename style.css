@@ -352,7 +352,7 @@ body {
     text-decoration: underline;
     font-style: italic;
   }
-  .diapo p {
+  .diapo p{
     opacity: 0;
     font-size: 2vw;
     position: absolute;
