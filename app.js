@@ -26,15 +26,14 @@ window.onload = () => {
   // fonction pour ajouter le titre de la diapo en version mobile sauf sur la page d'accueil
   ajoutDivMobile()
   function ajoutDivMobile() {
-    setTimeout(() => {
-      if (largeurFenetre < 1100 && titrePage != "Présentation de mon projet") {
-        const parentDivAjoute = document.querySelector('.container');
-        const divAjoute = document.createElement('div');
-        divAjoute.className = 'divTitreMobile';
-        divAjoute.innerHTML = titrePage;
-        parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);
-      }  
-    }, 500);  }
+    if (largeurFenetre < 1100 && titrePage != "Présentation de mon projet") {
+      const parentDivAjoute = document.querySelector('.container');
+      const divAjoute = document.createElement('div');
+      divAjoute.className = 'divTitreMobile';
+      divAjoute.innerHTML = titrePage;
+      parentDivAjoute.parentNode.insertBefore(divAjoute, parentDivAjoute);
+    }
+  }
 }
 // position curseur
 let timer; // variable pour effacer le chrono setimeout)
@@ -46,14 +45,22 @@ document.addEventListener('mousemove', e => {
   clearTimeout(timer);
   timer = setTimeout(() => {
     curseur.classList.remove('cursor');
-  }, 500);
+  }, 1000);
 })
 // Animation curseur
+let timerExpand;
+let timerExpandRemove;
 document.addEventListener('click', () => {
-  curseur.classList.add('expand');
-  setTimeout(() => {
-    curseur.classList.remove('expand');
-  }, 250);
+  if (curseur.className == 'curseur cursor') {
+    clearTimeout(timerExpand)
+    timerExpand = setTimeout(() => {
+      curseur.classList.add('expand');
+      clearTimeout(timerExpandRemove)
+      timerExpandRemove = setTimeout(() => {
+        curseur.classList.remove('expand');
+      }, 250);
+    }, 150);
+  }
 })
 
 // bascule le menu hamburger in and out quand on click dessus
@@ -126,32 +133,40 @@ const span = document.querySelector('.close'); // récupère l'élément <span> 
 const textModal = document.querySelector('.textModal'); // récupère l'élément text de la Popup
 const titreModal = document.querySelector('.titreModal'); // récupère l'élément titre de la Popup
 // quand click sur un des liens myBtn, ouvre la fenêtre
-for (let b = 0; b < btn.length; b++) {
-  btn[b].addEventListener('click', () => { // quand clique sur un lien
-    titreModal.innerHTML = btn[b].textContent; // change le titre de la Popup
-    btn[b].style.color = "var(--tertiaire)"; // change la couleur du lien
-    if (b == 0) { // texte spécifique pour Solution
-      textModal.innerHTML = "à la place de Produits<br><br>Employeurs: service d'abonnement et accès à la CVthèque<br><br>Candidats: gratuit et accès aux offres";
-    } else if (b == 1) { // texte spécifique pour Accès
-      textModal.innerHTML = "au lieu de Place (emplacement)<br><br>Le service doit être accessible<br><br>n’importe où ...<br>n’importe quand ...<br>et ... sur n’importe quel appareil<br><br> Il faut développer une présence intégrée cross-canal qui considère le cycle d’activité du client";
-    } else if (b == 2) { // texte spécifique pour Valeur
-      textModal.innerHTML = "à la place de Price<br><br>Perception, valorisation du service<br><br>Accroître l'image de marque, pour cela le service doit être de qualité";
-    } else { // texte spécifique pour Education
-      textModal.innerHTML = "c'était la Promotion (communication)<br><br>Eduquer autour du handicap<br><br>Développer le contenu informatif";
-    }
-    modal.style.display = "block"; // affiche la fenêtre
-  })
-}
-// quand clique sur la croix <span> (x), ferme la fenêtre
-span.addEventListener('click', () => {
-  fermePopUp(); // appel fonction
-})
-// quand clique sur le reste de la page, ferme la fenêtre
-document.addEventListener('click', (event) => {
-  if (event.target == modal) { // Le cadre div.modal autour de la fenêtre est transparent mais fait 100% hauteur/largeur donc on ne peut que cliquer dessus sans le savoir !!
-    fermePopUp(); // appel fonction
+if (span != null) {
+  for (let b = 0; b < btn.length; b++) {
+    btn[b].addEventListener('click', () => { // quand clique sur un lien
+      titreModal.innerHTML = btn[b].textContent; // change le titre de la Popup
+      btn[b].style.color = "var(--tertiaire)"; // change la couleur du lien
+      if (btn[b].textContent == 'Solution') { // texte spécifique pour Solution
+        textModal.innerHTML = "à la place de Produits<br><br>Employeurs: service d'abonnement et accès à la CVthèque<br><br>Candidats: gratuit et accès aux offres";
+      } else if (btn[b].textContent == 'Accès') { // texte spécifique pour Accès
+        textModal.innerHTML = "au lieu de Place (emplacement)<br><br>Le service doit être accessible<br><br>n’importe où ...<br>n’importe quand ...<br>et ... sur n’importe quel appareil<br><br> Il faut développer une présence intégrée cross-canal qui considère le cycle d’activité du client";
+      } else if (btn[b].textContent == 'Valeur') { // texte spécifique pour Valeur
+        textModal.innerHTML = "à la place de Price<br><br>Perception, valorisation du service<br><br>Accroître l'image de marque, pour cela le service doit être de qualité";
+      } else if (btn[b].textContent == 'Education') { // texte spécifique pour Education
+        textModal.innerHTML = "c'était la Promotion (communication)<br><br>Eduquer autour du handicap<br><br>Développer le contenu informatif";
+      } else if (btn[b].textContent == 'Candidat') {
+        textModal.innerHTML = "cand";
+      } else if (btn[b].textContent == 'Employeur') {
+        textModal.innerHTML = "empl";
+      } else {
+        textModal.innerHTML = "agence";
+      }
+      modal.style.display = "block"; // affiche la fenêtre
+    })
   }
-})
-function fermePopUp() { // fonction ferme la fenêtre
-  modal.style.display = "none";
+  // quand clique sur la croix <span> (x), ferme la fenêtre
+  span.addEventListener('click', () => {
+    fermePopUp(); // appel fonction
+  })
+  // quand clique sur le reste de la page, ferme la fenêtre
+  document.addEventListener('click', (event) => {
+    if (event.target == modal) { // Le cadre div.modal autour de la fenêtre est transparent mais fait 100% hauteur/largeur donc on ne peut que cliquer dessus sans le savoir !!
+      fermePopUp(); // appel fonction
+    }
+  })
+  function fermePopUp() { // fonction ferme la fenêtre
+    modal.style.display = "none";
+  }
 }

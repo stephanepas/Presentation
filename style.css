@@ -65,7 +65,7 @@ body {
   }
 }
 .expand {
-  animation: curseur1 0.5s forwards;
+  animation: curseur1 0.25s forwards;
   border: 5px solid rgb(255, 0, 0);
 }
 @keyframes curseur1 {
@@ -193,6 +193,10 @@ body {
 .myBtn {
   color: rgb(54, 54, 136);
   text-decoration: underline;
+  pointer-events: none;
+}
+.diapo.isActive .myBtn {
+  pointer-events: auto;
 }
 .myBtn:hover,
 .modal:hover {
@@ -398,5 +402,8 @@ body {
     max-width: 90%;
     border-radius: 5px;
     box-shadow: 0 0 6px var(--tertiaire);
+  }
+  .parcours{
+    height: 70vh;
   }
 }
