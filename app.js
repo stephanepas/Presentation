@@ -44,22 +44,17 @@ document.addEventListener('mousemove', e => {
   curseur.classList.add('cursor');
   clearTimeout(timer);
   timer = setTimeout(() => {
+    curseur.classList.remove('expand');
     curseur.classList.remove('cursor');
   }, 1000);
 })
 // Animation curseur
-let timerExpand;
-let timerExpandRemove;
 document.addEventListener('click', () => {
-  if (curseur.className == 'curseur cursor') {
-    clearTimeout(timerExpand)
-    timerExpand = setTimeout(() => {
-      curseur.classList.add('expand');
-      clearTimeout(timerExpandRemove)
-      timerExpandRemove = setTimeout(() => {
-        curseur.classList.remove('expand');
-      }, 250);
-    }, 150);
+  if (curseur.classList.contains("cursor")) {
+    curseur.classList.add('expand');
+    setTimeout(() => {
+      curseur.classList.remove('expand');
+    }, 250);
   }
 })
 
@@ -79,7 +74,7 @@ menuLinks.forEach(
 )
 // animation des diapos quelque soit le nombre de diapos
 for (let i = 0; i < diapos.length; i++) {
-  // affichage du numéro et ombre de diapos
+  // affichage du numéro et nombre total de diapos
   let diap = i + 1;
   const numDiapo = 'Diapo ' + diap + '/' + diapos.length;
   diapos[i].insertAdjacentHTML('afterbegin', numDiapo);
@@ -138,20 +133,20 @@ if (span != null) {
     btn[b].addEventListener('click', () => { // quand clique sur un lien
       titreModal.innerHTML = btn[b].textContent; // change le titre de la Popup
       btn[b].style.color = "var(--tertiaire)"; // change la couleur du lien
-      if (btn[b].textContent == 'Solution') { // texte spécifique pour Solution
-        textModal.innerHTML = "à la place de Produits<br><br>Employeurs: service d'abonnement et accès à la CVthèque<br><br>Candidats: gratuit et accès aux offres";
-      } else if (btn[b].textContent == 'Accès') { // texte spécifique pour Accès
-        textModal.innerHTML = "au lieu de Place (emplacement)<br><br>Le service doit être accessible<br><br>n’importe où ...<br>n’importe quand ...<br>et ... sur n’importe quel appareil<br><br> Il faut développer une présence intégrée cross-canal qui considère le cycle d’activité du client";
-      } else if (btn[b].textContent == 'Valeur') { // texte spécifique pour Valeur
-        textModal.innerHTML = "à la place de Price<br><br>Perception, valorisation du service<br><br>Accroître l'image de marque, pour cela le service doit être de qualité";
-      } else if (btn[b].textContent == 'Education') { // texte spécifique pour Education
-        textModal.innerHTML = "c'était la Promotion (communication)<br><br>Eduquer autour du handicap<br><br>Développer le contenu informatif";
+      if (btn[b].textContent == 'Produits') { // texte spécifique pour Produits
+        textModal.innerHTML = "= Offre de service Handirecrute.com<br><br>Employeurs: service d'abonnement et accès à la CVthèque<br><br>Candidats: gratuit et accès aux offres<br><br>Conseils: volonté de conseiller autour du handicap";
+      } else if (btn[b].textContent == 'Place') { // texte spécifique pour Place
+        textModal.innerHTML = "<br><br>Le service doit être accessible<br><br>n’importe où ...<br>n’importe quand ...<br>et ... sur n’importe quel appareil<br><br>Présence cross-canal:<br>Site propre / Réseaux sociaux / Google ads / Site d'offres d'emploi<br>Pour ce dernier, il sera à développer.";
+      } else if (btn[b].textContent == 'Prix') { // texte spécifique pour Prix
+        textModal.innerHTML = "<br><br>Pour les employeurs: 300€/trimestre avec 6 offres d'emploi/mois<br>+ 50€/annonce supplémentaire<br><br>En moyenne, une prestation de recrutement est estimé à 3 000€<br><br>Pour le candidat: gratuit";
+      } else if (btn[b].textContent == 'Promotion') { // texte spécifique pour Promotion
+        textModal.innerHTML = "<br><br>Mise en avant des offres sur Google Ads<br><br>Participation à des manifestations<br><br>Référencement naturel<br><br>Contenu à développer par le côté formation autour du handicap.";
       } else if (btn[b].textContent == 'Candidat') {
-        textModal.innerHTML = "cand";
+        textModal.innerHTML = "<br>Femme (75%) avec handicap en recherche d'emploi<br><br>sûre d'elle, en recherche d'autonomie<br><br>A peur de ne pas correspondre au poste";
       } else if (btn[b].textContent == 'Employeur') {
-        textModal.innerHTML = "empl";
+        textModal.innerHTML = "<br>Décisionnaire entreprise >20pers.<br><br>Niveau technologique moyen<br><br>Ne s'arrête pas au prix mais à l'efficacité<br><br>A peur que le handicap pénalise le poste";
       } else {
-        textModal.innerHTML = "agence";
+        textModal.innerHTML = "<br>Gérant d'une agence<br><br>Imbus de sa personne<br><br>A l'aise sur les nouvelles technologies<br><br>A peur de manquer de candidats";
       }
       modal.style.display = "block"; // affiche la fenêtre
     })
